@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static',filename='image/home-2.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='css/style.css') }}"
+    />
+    <title>HPP</title>
+  </head>
+  <body>
+    <div class="title-container">
+      <h1 class="title">House Price Predictor</h1>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-home-2"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#2c3e50"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <polyline points="5 12 3 12 12 3 21 12 19 12" />
+        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+        <rect x="10" y="12" width="4" height="4" />
+      </svg>
+    </div>
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="text" name="AI" placeholder="Area Income" />
+      <input type="text" name="HG" placeholder="House Age" />
+      <input type="text" name="NoR" placeholder="Number of Rooms" />
+      <input type="text" name="NoB" placeholder="Number of Bedrooms" />
+      <input type="text" name="AP" placeholder="Area Population" />
+      <button class="button" role="button">Predict</button>
+    </form>
+    {% if prediction != 0 %}
+    <h1 class="prediction-text">House predicted ${{prediction}}</h1>
+    {% endif %}
+  </body>
+</html>
